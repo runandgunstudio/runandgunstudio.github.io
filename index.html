@@ -1,1 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Run &amp; Gun Games — Indie Mobile Game Studio</title>
+  <meta name="description" content="Official game portfolio of Run & Gun Games — independent mobile game studio crafting tactile 2D physics and arcade games." />
+  <link rel="icon" type="image/jpeg" href="./logo_colourful.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
 
+  <style>
+    :root {
+      --bg: #09090b;
+      --surface: #121216;
+      --surface-2: #18181e;
+      --border: rgba(255, 255, 255, 0.09);
+      --border-hover: rgba(255, 255, 255, 0.22);
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --accent: #ef4444;
+      --accent-soft: rgba(239, 68, 68, 0.14);
+      --green: #22c55e;
+      --radius: 16px;
+      --max-w: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(9, 9, 11, 0.82);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    /* Tightly frames logo_transparent_white.png by trimming its square canvas padding */
+    .brand-logo {
+      width: 152px;
+      height: 50px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 256px;
+      max-width: none;
+      height: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-weight: 600;
+      font-size: 0.86rem;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      opacity: 0.88;
+      color: var(--bg);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 56px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .studio-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.7);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.2vw, 3.1rem);
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      max-width: 540px;
+      margin-bottom: 26px;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item strong {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .stat-item span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .hero-banner {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Sections */
+    section {
+      padding: 44px 0;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      margin-bottom: 24px;
+    }
+
+    /* Featured Game Card */
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-identity {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .game-icon {
+      width: 84px;
+      height: 84px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+      flex-shrink: 0;
+    }
+
+    .project-title-wrap h2 {
+      font-size: clamp(1.45rem, 2.6vw, 2rem);
+      margin-bottom: 8px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .tag.live {
+      background: var(--accent-soft);
+      border-color: rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #dc2626;
+    }
+
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--border-hover);
+      background: #202028;
+    }
+
+    .project-body {
+      padding-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .project-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 780px;
+    }
+
+    .feature-pills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .feature-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .feature-box h3 {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+
+    .feature-box p {
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+
+    /* Gameplay Video */
+    .video-wrap {
+      margin-top: 8px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* Screenshot Gallery */
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .gallery-hint {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .shot-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .shot-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-hover);
+    }
+
+    .shot-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Roadmap */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .roadmap-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .phase-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .phase-done {
+      background: rgba(34, 197, 94, 0.14);
+      color: #86efac;
+    }
+
+    .phase-next {
+      background: rgba(250, 204, 21, 0.14);
+      color: #fde047;
+    }
+
+    .phase-ready {
+      background: rgba(56, 189, 248, 0.14);
+      color: #7dd3fc;
+    }
+
+    .roadmap-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+    }
+
+    .roadmap-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .roadmap-card li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 8px;
+      font-weight: 700;
+    }
+
+    /* Contact */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(18, 18, 22, 0.96) 55%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .contact-card h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 0.96rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 40px;
+      margin-top: 24px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-img {
+      max-width: min(94vw, 1200px);
+      max-height: 84vh;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .lb-btn {
+      position: fixed;
+      background: rgba(24, 24, 30, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .lb-btn:hover {
+      background: rgba(45, 45, 56, 0.95);
+    }
+
+    .lb-close { top: 20px; right: 20px; }
+    .lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+
+    .lb-counter {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: rgba(24, 24, 30, 0.85);
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .feature-pills,
+      .roadmap-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .project-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand-logo" aria-label="Run & Gun Games Home">
+        <img src="./logo_transparent_white.png" alt="Run & Gun Games Logo" />
+      </a>
+      <nav class="nav-links">
+        <a href="#featured">Featured Game</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta">Publisher Inquiry</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Studio Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="studio-badge">
+            <span class="status-dot"></span>
+            Independent Mobile Game Studio
+          </div>
+          <h1>Tactile 2D Physics &amp; Arcade Games</h1>
+          <p>
+            Run &amp; Gun Games builds snappy, physics-driven mobile titles designed for instant
+            pick-up-and-play appeal, tight controls, and rapid iteration from prototype to launch.
+          </p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <strong>Android / Mobile</strong>
+              <span>Primary Platform</span>
+            </div>
+            <div class="stat-item">
+              <strong>2D Physics Arcade</strong>
+              <span>Core Genre Focus</span>
+            </div>
+            <div class="stat-item">
+              <strong>Open for Publishing</strong>
+              <span>Testing &amp; Scale</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-banner">
+          <img src="./logo_splash_screen.png" alt="Run & Gun Games Splash Banner" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Game -->
+    <section id="featured">
+      <div class="container">
+        <div class="section-label">Featured Build</div>
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-identity">
+              <img src="./game_icon.png" alt="Game Icon" class="game-icon" />
+              <div class="project-title-wrap">
+                <h2 id="game-title">Sticky Leap (Prototype)</h2>
+                <div class="tag-row">
+                  <span class="tag live">Playable Prototype</span>
+                  <span class="tag">Android APK</span>
+                  <span class="tag">2D Physics Platformer</span>
+                  <span class="tag">Landscape</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="action-row">
+              <a id="apk-btn" href="#" target="_blank" rel="noopener" class="btn btn-primary">
+                Download Test APK
+              </a>
+              <a id="video-btn" href="#gameplay-video" class="btn btn-secondary">
+                Watch Gameplay
+              </a>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <p class="project-desc">
+              A physics-based sticky-blob platformer where players launch, cling, and navigate
+              through challenging vertical and horizontal terrain obstacles. Built around tight
+              one-mechanic mastery, spiked hazard timing, and instant checkpoint recovery to keep
+              sessions fast and replayable.
+            </p>
+
+            <div class="feature-pills">
+              <div class="feature-box">
+                <h3>Squishy Surface Physics</h3>
+                <p>Responsive launch momentum and sticky wall/ceiling grip designed for satisfying skill-based jumps.</p>
+              </div>
+              <div class="feature-box">
+                <h3>Checkpoint Flow</h3>
+                <p>Activatable flag checkpoints and instant quick-reset controls eliminate downtime between attempts.</p>
+              </div>
+              <div class="feature-box">
+                <h3>Unlockable Character Skins</h3>
+                <p>Multiple expressive blob designs engineered to tie directly into checkpoint progression and meta rewards.</p>
+              </div>
+            </div>
+
+            <!-- Automatically shown once you add your YouTube link in STUDIO_CONFIG -->
+            <div id="gameplay-video" class="video-wrap" style="display: none;">
+              <iframe
+                id="yt-iframe"
+                title="Gameplay Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section id="screenshots">
+      <div class="container">
+        <div class="gallery-header">
+          <div>
+            <div class="section-label">In-Game Capture</div>
+            <h2 class="section-title" style="margin-bottom: 0;">Gameplay Screenshots</h2>
+          </div>
+          <span class="gallery-hint">Click any screenshot to inspect full screen</span>
+        </div>
+
+        <div id="gallery-grid" class="gallery-grid"></div>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section id="roadmap">
+      <div class="container">
+        <div class="section-label">Production Status</div>
+        <h2 class="section-title">Development Roadmap</h2>
+
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="phase-tag phase-done">Completed</span>
+            <h3>Core Prototype</h3>
+            <ul>
+              <li>Core sticky-blob movement &amp; physics loop</li>
+              <li>Checkpoint activation &amp; instant respawn</li>
+              <li>Terrain obstacles &amp; spiked hazard mechanics</li>
+              <li>Clean, distraction-free mobile HUD</li>
+            </ul>
+          </div>
+
+          <div class="roadmap-card">
+            <span class="phase-tag phase-next">Next Milestone</span>
+            <h3>Content &amp; Meta Expansion</h3>
+            <ul>
+              <li>Extended multi-zone map progression</li>
+              <li>Checkpoint-based skin unlocking system</li>
+              <li>In-game shop &amp; reward loop</li>
+              <li>Audio polish &amp; additional obstacle variety</li>
+            </ul>
+          </div>
+
+          <div class="roadmap-card">
+            <span class="phase-tag phase-ready">Publisher Ready</span>
+            <h3>Testing &amp; Integration</h3>
+            <ul>
+              <li>Clean Android build ready for marketability tests</li>
+              <li>Ready for analytics &amp; monetization SDK setup</li>
+              <li>Fast turnaround for KPI &amp; retention tweaks</li>
+              <li>Solo indie agility with focused execution</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <h2>Interested in testing or publishing?</h2>
+            <p>
+              Reach out directly for updated test builds, SDK integration readiness, or gameplay
+              feedback discussions.
+            </p>
+          </div>
+          <div class="action-row">
+            <a id="email-link" href="mailto:hello@runandgungames.com" class="btn btn-primary">
+              Email Studio
+            </a>
+            <button id="copy-email-btn" type="button" class="btn btn-secondary">
+              Copy Email
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="brand-logo" style="width: 120px; height: 40px;">
+        <img src="./logo_transparent_white.png" alt="Run & Gun Games" style="width: 204px;" />
+      </div>
+      <span>&copy; 2026 Run &amp; Gun Games. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot Viewer">
+    <button class="lb-btn lb-close" id="lb-close" aria-label="Close">&times;</button>
+    <button class="lb-btn lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+    <img id="lb-img" class="lightbox-img" src="" alt="Gameplay Screenshot" />
+    <button class="lb-btn lb-next" id="lb-next" aria-label="Next">&#8250;</button>
+    <div id="lb-counter" class="lb-counter"></div>
+  </div>
+
+  <script>
+    // ============================================================
+    // EDIT THESE 4 LINES WITH YOUR REAL DETAILS BEFORE PUBLISHING
+    // ============================================================
+    const STUDIO_CONFIG = {
+      gameTitle: "Your Game Title",                // Example: "Blob Hop"
+      youtubeUrl: "",                              // Paste your Unlisted YouTube link here
+      apkDownloadUrl: "",                          // Paste your Google Drive APK link here
+      contactEmail: "your.email@gmail.com",        // Your publisher contact email
+      screenshotCount: 11                          // Loads s1.jpg through s11.jpg
+    };
+
+    // Apply Game Title
+    document.getElementById("game-title").textContent = STUDIO_CONFIG.gameTitle;
+
+    // Apply Contact Email
+    const emailLink = document.getElementById("email-link");
+    const copyBtn = document.getElementById("copy-email-btn");
+    emailLink.href = `mailto:${STUDIO_CONFIG.contactEmail}`;
+    emailLink.textContent = STUDIO_CONFIG.contactEmail;
+
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(STUDIO_CONFIG.contactEmail).then(() => {
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => (copyBtn.textContent = "Copy Email"), 1800);
+      });
+    });
+
+    // Apply APK Link (hides button cleanly if left blank)
+    const apkBtn = document.getElementById("apk-btn");
+    if (STUDIO_CONFIG.apkDownloadUrl.trim()) {
+      apkBtn.href = STUDIO_CONFIG.apkDownloadUrl.trim();
+    } else {
+      apkBtn.style.display = "none";
+    }
+
+    // Parse & Embed YouTube Video (accepts full YouTube URL, youtu.be link, or raw video ID)
+    function extractYouTubeId(input) {
+      const val = (input || "").trim();
+      if (!val) return "";
+      const match = val.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([a-zA-Z0-9_-]{11})/);
+      if (match) return match[1];
+      return /^[a-zA-Z0-9_-]{11}$/.test(val) ? val : "";
+    }
+
+    const ytId = extractYouTubeId(STUDIO_CONFIG.youtubeUrl);
+    const videoWrap = document.getElementById("gameplay-video");
+    const videoBtn = document.getElementById("video-btn");
+    if (ytId) {
+      document.getElementById("yt-iframe").src = `https://www.youtube.com/embed/${ytId}?rel=0`;
+      videoWrap.style.display = "block";
+    } else {
+      videoBtn.style.display = "none";
+    }
+
+    // Build Screenshot Gallery (s1.jpg to s11.jpg) & Lightbox
+    const galleryGrid = document.getElementById("gallery-grid");
+    const loadedShots = [];
+
+    for (let i = 1; i <= STUDIO_CONFIG.screenshotCount; i++) {
+      const src = `./s${i}.jpg`;
+      const card = document.createElement("div");
+      card.className = "shot-card";
+
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = `${STUDIO_CONFIG.gameTitle} Gameplay Screenshot ${i}`;
+      img.loading = "lazy";
+
+      img.onload = () => {
+        const idx = loadedShots.length;
+        loadedShots.push(src);
+        card.addEventListener("click", () => openLightbox(idx));
+      };
+
+      // Hide gracefully if any file number is missing or named differently
+      img.onerror = () => {
+        card.remove();
+      };
+
+      card.appendChild(img);
+      galleryGrid.appendChild(card);
+    }
+
+    // Lightbox Controls
+    const lightbox = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lb-img");
+    const lbCounter = document.getElementById("lb-counter");
+    let currentIdx = 0;
+
+    function showSlide(index) {
+      if (!loadedShots.length) return;
+      currentIdx = (index + loadedShots.length) % loadedShots.length;
+      lbImg.src = loadedShots[currentIdx];
+      lbCounter.textContent = `${currentIdx + 1} / ${loadedShots.length}`;
+    }
+
+    function openLightbox(index) {
+      showSlide(index);
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    document.getElementById("lb-close").addEventListener("click", closeLightbox);
+    document.getElementById("lb-prev").addEventListener("click", () => showSlide(currentIdx - 1));
+    document.getElementById("lb-next").addEventListener("click", () => showSlide(currentIdx + 1));
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showSlide(currentIdx - 1);
+      if (e.key === "ArrowRight") showSlide(currentIdx + 1);
+    });
+  </script>
+</body>
+</html>
