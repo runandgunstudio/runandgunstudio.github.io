@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Run &amp; Gun Games — Indie Game Studio</title>
-  <meta name="description" content="Official portfolio of Run & Gun Games — a 2-person indie studio building 2D and 3D games, starting with Sticky Situation for Android and iOS." />
+  <meta name="description" content="Official portfolio of Run & Gun Games — an indie studio building 2D and 3D games, starting with Sticky Situation for Android and iOS." />
   <link rel="icon" type="image/jpeg" href="./logo_colourful.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,16 +15,16 @@
       --bg: #09090b;
       --surface: #121216;
       --surface-2: #18181f;
-      --border: rgba(255, 255, 255, 0.1);
-      --border-hover: rgba(255, 255, 255, 0.24);
+      --border: rgba(255, 255, 255, 0.09);
+      --border-hover: rgba(255, 255, 255, 0.22);
       --text: #f4f4f5;
       --text-soft: #d4d4d8;
       --muted: #a1a1aa;
       --accent: #ef4444;
       --accent-soft: rgba(239, 68, 68, 0.14);
       --green: #22c55e;
-      --radius: 18px;
-      --max-w: 1100px;
+      --radius: 16px;
+      --max-w: 1080px;
     }
 
     * {
@@ -42,8 +42,8 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      font-size: 16px;
-      line-height: 1.7;
+      font-size: 15px;
+      line-height: 1.6;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
@@ -51,7 +51,7 @@
     h1, h2, h3 {
       font-family: 'Space Grotesk', sans-serif;
       letter-spacing: -0.02em;
-      line-height: 1.2;
+      line-height: 1.18;
     }
 
     a {
@@ -67,7 +67,7 @@
       width: 100%;
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 22px;
+      padding: 0 20px;
     }
 
     /* Navigation */
@@ -81,14 +81,14 @@
     }
 
     .nav {
-      height: 74px;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
     }
 
-    /* Framed cleanly so all 4 logo borders stay visible */
+    /* Cleanly frames all 4 borders of logo_transparent_white.png */
     .brand-logo {
       width: 146px;
       height: 54px;
@@ -110,8 +110,8 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
-      font-size: 0.96rem;
+      gap: 26px;
+      font-size: 0.92rem;
       font-weight: 500;
       color: var(--text-soft);
     }
@@ -127,12 +127,12 @@
     }
 
     .nav-cta {
-      padding: 10px 18px;
+      padding: 9px 16px;
       border-radius: 999px;
       background: var(--text);
       color: var(--bg);
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       white-space: nowrap;
       transition: opacity 0.2s ease;
     }
@@ -141,16 +141,16 @@
       opacity: 0.88;
     }
 
-    /* Mobile Menu Button & Drawer */
+    /* Mobile Menu */
     .menu-toggle {
       display: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
       background: var(--surface-2);
       border: 1px solid var(--border);
       color: var(--text);
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       cursor: pointer;
       align-items: center;
       justify-content: center;
@@ -161,7 +161,7 @@
       display: none;
       border-top: 1px solid var(--border);
       background: var(--bg);
-      padding: 16px 22px 22px;
+      padding: 14px 20px 20px;
     }
 
     .mobile-menu.open {
@@ -175,12 +175,11 @@
     }
 
     .mobile-menu-links a {
-      padding: 12px 14px;
-      border-radius: 12px;
-      font-size: 1rem;
+      padding: 11px 14px;
+      border-radius: 10px;
+      font-size: 0.96rem;
       font-weight: 500;
       color: var(--text-soft);
-      background: transparent;
     }
 
     .mobile-menu-links a:hover,
@@ -190,7 +189,7 @@
     }
 
     .mobile-menu-links .mobile-cta {
-      margin-top: 8px;
+      margin-top: 6px;
       background: var(--accent);
       color: #fff;
       text-align: center;
@@ -199,13 +198,13 @@
 
     /* Hero */
     .hero {
-      padding: 64px 0 48px;
+      padding: 54px 0 42px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 44px;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 40px;
       align-items: center;
     }
 
@@ -216,57 +215,57 @@
     .studio-badge {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      padding: 7px 14px;
+      gap: 8px;
+      padding: 6px 13px;
       border-radius: 999px;
       background: var(--surface-2);
       border: 1px solid var(--border);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 500;
       color: var(--text-soft);
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
 
     .status-dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--green);
-      box-shadow: 0 0 10px rgba(34, 197, 94, 0.75);
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.75);
       flex-shrink: 0;
     }
 
     .hero h1 {
-      font-size: clamp(2.1rem, 4.3vw, 3.2rem);
-      margin-bottom: 20px;
+      font-size: clamp(1.95rem, 3.8vw, 2.85rem);
+      margin-bottom: 14px;
     }
 
     .hero p {
       color: var(--text-soft);
-      font-size: 1.12rem;
-      line-height: 1.75;
-      max-width: 560px;
-      margin-bottom: 32px;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      max-width: 500px;
+      margin-bottom: 26px;
     }
 
     .hero-stats {
       display: flex;
       flex-wrap: wrap;
-      gap: 28px 36px;
-      padding-top: 24px;
+      gap: 22px 32px;
+      padding-top: 20px;
       border-top: 1px solid var(--border);
     }
 
     .stat-item strong {
       display: block;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.12rem;
+      font-size: 1rem;
       color: var(--text);
       margin-bottom: 2px;
     }
 
     .stat-item span {
-      font-size: 0.9rem;
+      font-size: 0.84rem;
       color: var(--muted);
     }
 
@@ -275,7 +274,7 @@
       overflow: hidden;
       border: 1px solid var(--border);
       background: var(--surface);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.45);
     }
 
     .hero-banner img {
@@ -286,29 +285,29 @@
 
     /* Sections */
     section {
-      padding: 56px 0;
+      padding: 46px 0;
     }
 
     .section-label {
-      font-size: 0.82rem;
+      font-size: 0.76rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--accent);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .section-title {
-      font-size: clamp(1.65rem, 3vw, 2.25rem);
-      margin-bottom: 28px;
+      font-size: clamp(1.45rem, 2.6vw, 1.9rem);
+      margin-bottom: 22px;
     }
 
     /* Featured Game Card */
     .project-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 36px;
+      border-radius: 20px;
+      padding: 28px;
     }
 
     .project-header {
@@ -316,25 +315,25 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 24px;
-      padding-bottom: 28px;
+      gap: 20px;
+      padding-bottom: 24px;
       border-bottom: 1px solid var(--border);
     }
 
     .project-identity {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       min-width: 0;
     }
 
     .game-icon {
-      width: 88px;
-      height: 88px;
-      border-radius: 22px;
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
       object-fit: cover;
       border: 1px solid var(--border);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
       flex-shrink: 0;
     }
 
@@ -343,20 +342,20 @@
     }
 
     .project-title-wrap h2 {
-      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
-      margin-bottom: 10px;
+      font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+      margin-bottom: 8px;
     }
 
     .tag-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 7px;
     }
 
     .tag {
-      font-size: 0.84rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      padding: 5px 12px;
+      padding: 4px 11px;
       border-radius: 999px;
       background: var(--surface-2);
       border: 1px solid var(--border);
@@ -372,7 +371,7 @@
     .action-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .btn {
@@ -380,9 +379,9 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 13px 22px;
-      border-radius: 12px;
-      font-size: 0.96rem;
+      padding: 11px 20px;
+      border-radius: 11px;
+      font-size: 0.91rem;
       font-weight: 600;
       cursor: pointer;
       border: 1px solid transparent;
@@ -415,47 +414,47 @@
     }
 
     .project-body {
-      padding-top: 30px;
+      padding-top: 24px;
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 24px;
     }
 
     .project-desc {
       color: var(--text-soft);
-      font-size: 1.1rem;
-      line-height: 1.8;
-      max-width: 800px;
+      font-size: 0.98rem;
+      line-height: 1.68;
+      max-width: 720px;
     }
 
     .feature-pills {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 16px;
     }
 
     .feature-box {
       background: var(--surface-2);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
+      border-radius: 14px;
+      padding: 20px;
     }
 
     .feature-box h3 {
-      font-size: 1.12rem;
-      margin-bottom: 10px;
+      font-size: 1.02rem;
+      margin-bottom: 7px;
       color: #fff;
     }
 
     .feature-box p {
-      font-size: 0.98rem;
-      line-height: 1.7;
-      color: var(--text-soft);
+      font-size: 0.9rem;
+      line-height: 1.58;
+      color: var(--muted);
     }
 
     /* Gameplay Video */
     .video-wrap {
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
       border: 1px solid var(--border);
       background: #000;
@@ -475,24 +474,24 @@
       align-items: flex-end;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 10px;
+      margin-bottom: 20px;
     }
 
     .gallery-hint {
-      font-size: 0.92rem;
+      font-size: 0.86rem;
       color: var(--muted);
     }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 16px;
     }
 
     .shot-card {
       position: relative;
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
       border: 1px solid var(--border);
       background: var(--surface);
@@ -511,29 +510,29 @@
       display: block;
     }
 
-    /* Roadmap */
+    /* Status & Roadmap */
     .roadmap-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 16px;
     }
 
     .roadmap-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 28px;
+      padding: 22px;
     }
 
     .phase-tag {
       display: inline-block;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      padding: 5px 12px;
+      padding: 4px 10px;
       border-radius: 999px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .phase-done {
@@ -552,22 +551,22 @@
     }
 
     .roadmap-card h3 {
-      font-size: 1.22rem;
-      margin-bottom: 16px;
+      font-size: 1.08rem;
+      margin-bottom: 12px;
     }
 
     .roadmap-card ul {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 13px;
+      gap: 9px;
       color: var(--text-soft);
-      font-size: 0.98rem;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
 
     .roadmap-card li {
-      padding-left: 16px;
+      padding-left: 14px;
       position: relative;
     }
 
@@ -581,38 +580,38 @@
 
     /* Contact */
     .contact-card {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.13), rgba(18, 18, 22, 0.97) 58%);
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(18, 18, 22, 0.97) 58%);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 40px 36px;
+      border-radius: 20px;
+      padding: 32px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 28px;
+      gap: 24px;
     }
 
     .contact-text {
-      max-width: 540px;
+      max-width: 500px;
       min-width: 0;
     }
 
     .contact-card h2 {
-      font-size: clamp(1.5rem, 2.8vw, 2.05rem);
-      margin-bottom: 12px;
+      font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+      margin-bottom: 8px;
     }
 
     .contact-card p {
       color: var(--text-soft);
-      font-size: 1.04rem;
-      line-height: 1.7;
-      margin-bottom: 12px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 10px;
     }
 
     .email-display {
       display: inline-block;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       font-weight: 600;
       color: #fff;
       word-break: break-all;
@@ -620,8 +619,8 @@
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 32px 0 44px;
-      margin-top: 24px;
+      padding: 28px 0 38px;
+      margin-top: 18px;
     }
 
     .footer-inner {
@@ -629,9 +628,9 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 18px;
+      gap: 16px;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.86rem;
     }
 
     .footer-logo {
@@ -674,10 +673,10 @@
       background: rgba(24, 24, 30, 0.9);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       cursor: pointer;
       display: grid;
       place-items: center;
@@ -697,10 +696,10 @@
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       color: var(--text-soft);
       background: rgba(24, 24, 30, 0.9);
-      padding: 7px 16px;
+      padding: 6px 14px;
       border-radius: 999px;
       border: 1px solid var(--border);
     }
@@ -729,26 +728,25 @@
       }
 
       .hero {
-        padding: 36px 0 32px;
+        padding: 34px 0 28px;
       }
 
       section {
-        padding: 36px 0;
+        padding: 34px 0;
       }
 
-      .hero p,
-      .project-desc {
-        font-size: 1.02rem;
+      .hero p {
+        font-size: 0.96rem;
       }
 
       .hero-stats {
-        gap: 20px 28px;
+        gap: 18px 26px;
       }
 
       .project-card,
       .contact-card {
-        padding: 22px 18px;
-        border-radius: 18px;
+        padding: 20px 18px;
+        border-radius: 16px;
       }
 
       .project-identity {
@@ -757,9 +755,9 @@
       }
 
       .game-icon {
-        width: 72px;
-        height: 72px;
-        border-radius: 18px;
+        width: 68px;
+        height: 68px;
+        border-radius: 16px;
       }
 
       .action-row {
@@ -773,12 +771,12 @@
 
       .feature-box,
       .roadmap-card {
-        padding: 22px 18px;
+        padding: 18px;
       }
 
       .gallery-grid {
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 12px;
       }
 
       .lb-prev,
@@ -846,24 +844,23 @@
             <span class="status-dot"></span>
             Indie Game Studio &bull; 2-Person Team
           </div>
-          <h1>Games Built to Challenge, Annoy, and Entertain</h1>
+          <h1>Crafting Fun, Challenging Games.</h1>
           <p>
-            Run &amp; Gun Games is a 2-person indie studio with plans to grow our team and build
-            all kinds of games—both 2D and 3D—for mobile, PC, and console. We are kicking
-            things off with our first 2D mobile title, and we are just getting started.
+            Run &amp; Gun Games is a 2-person indie studio growing toward 2D and 3D games
+            across mobile, PC, and console—starting with our first mobile title.
           </p>
           <div class="hero-stats">
             <div class="stat-item">
               <strong>2-Person Team</strong>
-              <span>Expanding Ahead</span>
+              <span>Growing Studio</span>
             </div>
             <div class="stat-item">
-              <strong>2D &amp; 3D Games</strong>
+              <strong>2D &amp; 3D</strong>
               <span>All Genres</span>
             </div>
             <div class="stat-item">
               <strong>Mobile, PC &amp; Console</strong>
-              <span>Current &amp; Future Goal</span>
+              <span>Our Roadmap</span>
             </div>
           </div>
         </div>
@@ -905,38 +902,36 @@
 
           <div class="project-body">
             <p class="project-desc">
-              Sticky Situation is a funny, rage-inducing 2D platformer where you fling a sticky
-              little blob past cruel jumps, tight walls, and spiked traps. One tiny slip sends
-              you right back down—making every move hilarious, frustrating, and impossible to
-              walk away from. The playable prototype is ready now, with just a few finishing
-              touches left on the maps and extras to be wrapped up very soon.
+              A funny, high-stakes 2D rage platformer where one slip sends your sticky blob right
+              back down. Easy to learn, tough to master, and built for nonstop retries. The
+              prototype is ready now, with final map sections and extras finishing soon.
             </p>
 
             <div class="feature-pills">
               <div class="feature-box">
                 <h3>Normal Mode: Drag &amp; Sling</h3>
                 <p>
-                  Pull back, aim, and sling your blob onto walls and ceilings. Simple to pick
-                  up in seconds, but brutal to master under pressure.
+                  Aim, fling, and stick across walls and ceilings. Quick to pick up, tricky to
+                  master.
                 </p>
               </div>
               <div class="feature-box">
                 <h3>Hard Mode: Tap Timing</h3>
                 <p>
-                  Want a real test of patience? Switch to tap-based timing jumps where every
-                  split second matters and mistakes punish you fast.
+                  Precision tap jumps where split-second timing is everything. Made for players
+                  who love a real test.
                 </p>
               </div>
               <div class="feature-box">
-                <h3>Funny Fails &amp; Quick Retries</h3>
+                <h3>Funny Fails &amp; Fast Retries</h3>
                 <p>
-                  Built for laugh-out-loud wipeouts, shareable rage moments, and fast
-                  checkpoint retries so players always go for one more try.
+                  Wild wipeouts, instant restarts, and checkpoint flags that keep you going for
+                  one more run.
                 </p>
               </div>
             </div>
 
-            <!-- Shows automatically once you paste your YouTube link in STUDIO_CONFIG -->
+            <!-- Shows automatically once you paste your YouTube link below -->
             <div id="gameplay-video" class="video-wrap" style="display: none;">
               <iframe
                 id="yt-iframe"
@@ -958,7 +953,7 @@
             <div class="section-label">In-Game Shots</div>
             <h2 class="section-title" style="margin-bottom: 0;">Gameplay Screenshots</h2>
           </div>
-          <span class="gallery-hint">Tap any screenshot to view full size</span>
+          <span class="gallery-hint">Tap any screenshot to zoom</span>
         </div>
 
         <div id="gallery-grid" class="gallery-grid"></div>
@@ -969,28 +964,28 @@
     <section id="roadmap">
       <div class="container">
         <div class="section-label">Project Status</div>
-        <h2 class="section-title">Where The Game Stands</h2>
+        <h2 class="section-title">Development Roadmap</h2>
 
         <div class="roadmap-grid">
           <div class="roadmap-card">
             <span class="phase-tag phase-done">Prototype Ready</span>
             <h3>Built &amp; Playable</h3>
             <ul>
-              <li>Playable prototype built for Android &amp; iOS</li>
-              <li>Normal Mode (drag &amp; sling) and Hard Mode (tap timing)</li>
-              <li>Sticky wall physics, spiked traps, and checkpoints</li>
-              <li>Clean mobile layout with instant one-tap retry</li>
+              <li>Android &amp; iOS prototype ready</li>
+              <li>Normal (drag &amp; sling) &amp; Hard (tap timing) modes</li>
+              <li>Sticky physics, spike traps &amp; checkpoints</li>
+              <li>Clean controls with instant restart</li>
             </ul>
           </div>
 
           <div class="roadmap-card">
             <span class="phase-tag phase-next">Finishing Soon</span>
-            <h3>Last Few Works Left</h3>
+            <h3>Final Touches</h3>
             <ul>
-              <li>Finishing the remaining map sections</li>
-              <li>Skin unlocks tied to checkpoints reached</li>
-              <li>In-game shop and reward system</li>
-              <li>Final sound effects and extra polish</li>
+              <li>Remaining map sections</li>
+              <li>Checkpoint-based skin unlocks</li>
+              <li>In-game shop &amp; rewards</li>
+              <li>Audio &amp; visual polish</li>
             </ul>
           </div>
 
@@ -998,10 +993,10 @@
             <span class="phase-tag phase-ready">For Publishers</span>
             <h3>Ready to Test</h3>
             <ul>
-              <li>Playable build ready for publisher review and tests</li>
-              <li>Ready to add tracking and ad SDKs</li>
-              <li>Fast updates and tweaks based on test feedback</li>
-              <li>Direct communication with our 2-person team</li>
+              <li>Playable build ready for review</li>
+              <li>Prepared for tracking &amp; ad SDKs</li>
+              <li>Fast updates from test feedback</li>
+              <li>Direct work with our 2-person team</li>
             </ul>
           </div>
         </div>
@@ -1013,10 +1008,9 @@
       <div class="container">
         <div class="contact-card">
           <div class="contact-text">
-            <h2>Want to test or publish Sticky Situation?</h2>
+            <h2>Let&rsquo;s test or publish together.</h2>
             <p>
-              Drop us an email for the latest test build, gameplay feedback, or publishing
-              talks. We check our inbox daily and reply fast.
+              Reach out for a test build, gameplay feedback, or publishing talks.
             </p>
             <span id="email-display" class="email-display">main.runandgun@gmail.com</span>
           </div>
